@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Rust-Web-很有范的导航站</title>
+    <link rel="shortcut icon" href="favcion.ico" />
+    <link rel="stylesheet" href=" css/iconfont.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+
+<body>
+<div class="container" id="container">
+    <aside class="left-bar" id="leftBar">
+        <div class="title">
+            <p>{{title}}</p>
+        </div>
+        <nav class="nav">
+            <div class="item active"><a href=""><i class="iconfont icon-daohang2"></i>导航</a><i class="line"></i></div>
+            <ul class="nav-item" id="navItem">
+                <li v-for = "guide in guides">
+                    <a v-bind:href="guide.id" class="active"><i class="iconfont icon-wendangdocument78"></i>{{guide.name}}</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <section class="main">
+        <div id="mainContent">
+            <!-- 手机端菜单 -->
+            <div id="menu-box">
+                <div id="menu">
+                    <input type="checkbox" id="menu-form">
+                    <label for="menu-form" class="menu-spin">
+                        <div class="line diagonal line-1"></div>
+                        <div class="line horizontal"></div>
+                        <div class="line diagonal line-2"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="box" v-for = "site in sites">
+                <a href="#" v-bind:name="site.group_id"></a>
+                <div class="sub-category">
+                    <div><i class="iconfont icon-wendangdocument78"></i>{{site.group_name}}</div>
+                </div>
+                <div v-for = "singleSite in site.navi_sites">
+                    <a v-bind:href="singleSite.site_url">
+                        <div class="item">
+                            <div class="logo"><img v-bind:src="singleSite.site_img_path" v-bind:alt="singleSite.site_name"> {{singleSite.site_name}}</div>
+                            <div class="desc">{{singleSite.site_description}}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <footer class="footer">
+            <div class="copyright" style="position: fixed;bottom: 8px;left: 0;">
+                <div>
+                    Copyright © einsli
+                    <a href="">Rust-Web导航</a>
+                </div>
+            </div>
+        </footer>
+        <div id="fixedBar"><svg class="Zi Zi--BackToTop" title="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path></svg></div>
+    </section>
+</div>
+<script type="text/javascript" src="js/yu.js"></script>
+</body>
